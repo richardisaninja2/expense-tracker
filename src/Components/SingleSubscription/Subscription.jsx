@@ -1,45 +1,68 @@
 import React, { useEffect, useState } from "react";
 import "../SingleSubscription/Subscription.css"
-import * as fa from 'react-icons/fa';
-import AddNew from "../AddNew/AddNew";
+import * as si from 'react-icons/si';
+import AddNew from '../AddNew/AddNew'
 
 
 export default function Subscription(){
     const [subsFromStorage, setSubsFromStorage] = useState();
-    const arr = [];
-    setSubsFromStorage(JSON.parse(localStorage.getItem('subscription')))
-
+    const[updatedSubs, setUpdatedSubs] = useState();
+    const colors = ["#f7be02","#fe5db4", "#05b862", "#7d4cfa", "#fe6234", "a505f0"];
     
 
+    // function getItems(){
+        
+    //     console.log(subsFromStorage)
+    // }
+    function handleDelete(i){
+        subsFromStorage.splice(i,1)
+        setUpdatedSubs(subsFromStorage)
+        localStorage.setItem('subscription', JSON.stringify(subsFromStorage))    
+        console.log(subsFromStorage)
+    }
 
 useEffect(() => {
-       
-    console.log(subsFromStorage)
-},[subsFromStorage])
+    //    getItems();
+    //bypass the infinite load 
+    const subsFromStorage = JSON.parse(localStorage.getItem('subscription'));
+    if(subsFromStorage){
+        setSubsFromStorage(subsFromStorage)
+    }
+    // setSubsFromStorage(JSON.parse(localStorage.getItem('subscription')))
+    console.log(JSON.parse(localStorage.getItem('subscription')))
+    
+},[updatedSubs])
 
-    if(Object.keys(subsFromStorage || {})){
+    if(!Object.keys(subsFromStorage || {})){
+        // console.log(subsFromStorage)
         return(<p>...loading</p>)
     }else{
         return(
             <div>
             <AddNew/>
-            {Object.keys(subsFromStorage).map((i, key) => (
-                <div>
-                    {subsFromStorage.name}
+            {subsFromStorage && Object.keys(subsFromStorage).map((i, key) => (
+                <div key={i} className="subscriptionCont"
+                style={{backgroundColor: colors[i] }}>
+                    <p  className="fLeft">{subsFromStorage[i].name}<br/>
+                        <span>${subsFromStorage[i].price}/month</span>  
+                    </p>
+                    <button onClick={() => handleDelete(i)}/>
+                    { <p className="fRight"><si.SiNetflix size={50}/></p> }
+                    
                 </div>
             ))}
     
     
     
     
-            <div className="subscriptionCont">
+            {/* <div className="subscriptionCont">
                 <p className="fLeft">Spotify<br/>
                   <span>$8/month</span>  
                 </p>
                 
-                <p className="fRight"><fa.FaSpotify size={50}/></p>
+                <p className="fRight"><si.SiSpotify size={50}/></p>
     
-            </div>
+            </div> */}
             </div>
         )
     }

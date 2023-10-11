@@ -2,10 +2,12 @@
     border-radius: 35px 35px 0 0;
     margin-left: 5%;
     margin-right: 5%;
+    padding-bottom: 5%;
+    margin-top: -7%;
     display: flex;
     align-items: center;
     font-size: 1.5em;
-    background: green;
+    /* background: green; */
 
 }
 .fLeft{

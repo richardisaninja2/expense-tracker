@@ -21,17 +21,17 @@ export default function AddNew(){
     }
     return(
         <form onSubmit={handleSubmit}>
-          <label>Enter your name:
+          <label>Enter your Subscription:
             <input
-              type="text"
-              name="color"
-              placeholder="color"
+              type="date"
+              name="date"
+              placeholder="Choose Date"
               value={sub.color || ""} 
               onChange={handleChange}
               
             />
             <input
-              type="text" 
+              type="number" 
               name="price"
               placeholder="price"
               value={sub.price || ""}

@@ -1,0 +1,29 @@
+.paymentH{
+    background: #26262b;
+    margin-right: 10%;
+    border-radius: 17px;
+    color: white;
+}
+.paymentH p{
+    
+}
+.paymentInner{
+    display: flex;
+    align-items: center;
+    background: #34343c;
+    border-radius: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+
+}
+.paymentInnerFlex{
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.paymentInnerFlex p:nth-child(2){
+  margin-top: -13%  
+}
