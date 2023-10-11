@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import "../PaymentHist/PaymentHist.css"
 import * as si from 'react-icons/si';
 
-export default function PaymentHist(){
+export default function PaymentHist(props){
 
     const [subsFromStorage, setSubsFromStorage] = useState();
     let invoiceDate;
@@ -10,14 +10,25 @@ export default function PaymentHist(){
     useEffect(() => {
         //    getItems();
         //bypass the infinite load 
-        const subsFromStorage = JSON.parse(localStorage.getItem('subscription'));
-        if(subsFromStorage){
-            setSubsFromStorage(subsFromStorage)
+        const subFromStorage = JSON.parse(localStorage.getItem('subscription'));
+        if(subFromStorage){  
+            subFromStorage.sort(function(a,b){
+                return new Date(a.date) - new Date(b.date);
+            });
+            setSubsFromStorage(subFromStorage)
+            
         }
         // setSubsFromStorage(JSON.parse(localStorage.getItem('subscription')))
-        console.log(JSON.parse(localStorage.getItem('subscription')))
-        
+        // console.log(JSON.parse(localStorage.getItem('subscription')))
+           
+     
+     
     },[])
+    
+   
+
+    
+
     function due(a){
     var dueDateElement = document.querySelector("#dueDate");
         // a.split("-");
@@ -34,13 +45,14 @@ export default function PaymentHist(){
     // dueDateElement.valueAsDate = invoiceDate;
 
     }
+
     if(!Object.keys(subsFromStorage || {})){
         // console.log(subsFromStorage)
         return(<p>...no Subs yet</p>)
     }else{
         return(<div className="paymentH">
-                <h2>Payment Hstory</h2>
-                {subsFromStorage && Object.keys(subsFromStorage).sort((a,b) =>  new Date(a.date) - new Date(b.date)).map((i, key) => (
+                {/* {console.log(subsFromStorage && Object.keys(subsFromStorage).map(key => subsFromStorage[key]))} */}
+                {subsFromStorage && Object.keys(subsFromStorage).map((i, key) => (
                     <div key={key} className="paymentInner">
                         <p><si.SiNetflix size={30}/></p> 
                         <div className="paymentInnerFlex">

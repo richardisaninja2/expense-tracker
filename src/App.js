@@ -6,6 +6,7 @@ import General from './Components/General/General';
 function App() {
   return (
     <div className="App">
+      Payment history
       <General/>
       {/* <Subscriptions/> */}
     </div>
