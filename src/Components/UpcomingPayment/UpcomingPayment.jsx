@@ -2,28 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../UpcomingPayment/UpcomingPayment.css";
 import * as si from 'react-icons/si';
 
-export default function UpcomingPayment(){
-    const [subsFromStorage, setSubsFromStorage] = useState();
+export default function UpcomingPayment(props){
     const[upcoming, setUpcoming] = useState();
-
     useEffect(() => {
-        //    getItems();
-        //bypass the infinite load 
-        const subFromStorage = JSON.parse(localStorage.getItem('subscription'));
-        if(subFromStorage){  
-            subFromStorage.sort(function(a,b){
-                return new Date(a.date) - new Date(b.date);
-            });
-            setSubsFromStorage(subFromStorage)   
-            setUpcoming(subFromStorage[0])
-        }
-        // setSubsFromStorage(JSON.parse(localStorage.getItem('subscription')))
-        // console.log(JSON.parse(localStorage.getItem('subscription')))
-           
-
-      
-    },[])
-    console.log(upcoming)
+        setUpcoming(props.upcoming)
+    },[props])
+    
     
     
     if(upcoming){

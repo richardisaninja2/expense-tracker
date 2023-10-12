@@ -1,0 +1,10 @@
+
+.monthTot h3{
+    font-weight: normal
+}
+.monthTot h1{
+    margin-top: 0;
+    font-size: 3em;
+    letter-spacing: .1rem;
+    font-weight: normal
+}
