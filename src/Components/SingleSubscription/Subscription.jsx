@@ -1,15 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "../SingleSubscription/Subscription.css"
 import * as si from 'react-icons/si';
+import * as ri from 'react-icons/ri';
 import AddNew from '../AddNew/AddNew'
+import { NavLink } from "react-router-dom";
 
 
 export default function Subscription(){
+    //set style from css
+    const [style, setStyle] = useState("subscriptionCont");
     const [subsFromStorage, setSubsFromStorage] = useState();
     const[updatedSubs, setUpdatedSubs] = useState();
-    const colors = ["#f7be02","#fe5db4", "#05b862", "#7d4cfa", "#fe6234", "a505f0"];
-    
+    //  = ["#f7be02","#fe5db4", "#05b862", "#7d4cfa", "#fe6234", "a505f0"];
+    const colors = new Array(15).fill(["#f7be02","#fe5db4", "#05b862", "#7d4cfa", "#fe6234", "#a505f0"]).flat();
+    console.log(colors)
 
+    const changeStyle = (e) => {
+        if(e.target.classList.contains('subscriptionCont')){
+
+            e.target.classList.add('subscriptionContClicked') 
+            
+
+            e.target.classList.remove('subscriptionCont') 
+            // document.querySelector('.deleteButton').style.display= 'block';
+        }
+        else{
+            e.target.classList.remove('subscriptionContClicked') 
+            e.target.classList.add('subscriptionCont')
+            // document.querySelector('.deleteButton').style.display= 'none';
+        }
+    }
     // function getItems(){
         
     //     console.log(subsFromStorage)
@@ -38,16 +58,25 @@ useEffect(() => {
         return(<p>...loading</p>)
     }else{
         return(
-            <div>
-            <AddNew/>
+            <div className="subscriptionPage">
+            {/* <AddNew/> */}
+             <div className="subscriptionCont  blue">
+                <p className="fLeft">Add a subscription<br/>
+                </p>
+                
+                <p className="fRight"><NavLink to="/addNew"><ri.RiAddCircleLine size={50}/></NavLink></p>
+    
+            </div> 
             {subsFromStorage && Object.keys(subsFromStorage).map((i, key) => (
-                <div key={i} className="subscriptionCont"
-                style={{backgroundColor: colors[i] }}>
+                <div key={i} className={style} onClick={changeStyle}
+                style={{backgroundColor: colors[i] } }>
                     <p  className="fLeft">{subsFromStorage[i].name}<br/>
                         <span>${subsFromStorage[i].price}/month</span>  
+                        <button className="deleteButton" onClick={() => handleDelete(i)} />
                     </p>
-                    <button onClick={() => handleDelete(i)}/>
+                    
                     { <p className="fRight"><si.SiNetflix size={50}/></p> }
+                    <br/>
                     
                 </div>
             ))}
@@ -55,14 +84,7 @@ useEffect(() => {
     
     
     
-            {/* <div className="subscriptionCont">
-                <p className="fLeft">Spotify<br/>
-                  <span>$8/month</span>  
-                </p>
-                
-                <p className="fRight"><si.SiSpotify size={50}/></p>
-    
-            </div> */}
+
             </div>
         )
     }

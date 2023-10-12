@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link, NavLink, Outlet } from "react-route
 import General from './Components/General/General';
 import * as si from 'react-icons/si';
 import { useState } from 'react';
+import AddNew from './Components/AddNew/AddNew';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<General/>}/>
           <Route path="/subscriptions" element={<Subscriptions/>}/>
+          <Route path="/addNew" element={<AddNew/>}/>
         </Routes>
         
       </BrowserRouter>

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import "../AddNew/AddNew.css"
+import { useNavigate } from "react-router-dom";
 
 export default function AddNew(){
     const [sub, setSub] = useState({});
     var subHistArray = JSON.parse(localStorage.getItem('subscription') || '[]');
+    const navigate = useNavigate();
 
 
 
     function handleSubmit(e){
             e.preventDefault();
+            navigate("/subscriptions")
             if(sub.name.length != 0){
                 subHistArray.push(sub);
             }
@@ -20,8 +24,9 @@ export default function AddNew(){
         
     }
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="addNewPage">
           <label>Enter your Subscription:
+          <br/>
             <input
               type="date"
               name="date"
@@ -30,6 +35,7 @@ export default function AddNew(){
               onChange={handleChange}
               
             />
+            <br/>
             <input
               type="number" 
               name="price"
@@ -38,6 +44,7 @@ export default function AddNew(){
               onChange={handleChange}
               
             />
+            <br/>
             <input
               type="text" 
               name="name"
@@ -46,6 +53,7 @@ export default function AddNew(){
               onChange={handleChange}
               
             />
+            <br/>
              <input type="submit" />
           </label>
         </form>
