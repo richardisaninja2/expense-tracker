@@ -44,8 +44,8 @@ export default function General(){
     return(
         <div className="generalCont">
             <MonthTotal total={total}/>
-            <UpcomingPayment upcoming={upcoming}/>
-            <h2>Upcoming Payments</h2>
+            <UpcomingPayment upcoming={upcoming} subsFromStorage={subsFromStorage}/>
+            <h2>Payments</h2>
             <PaymentHist />
         </div>
         

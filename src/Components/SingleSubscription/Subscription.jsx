@@ -13,7 +13,7 @@ export default function Subscription(){
     const[updatedSubs, setUpdatedSubs] = useState();
     //  = ["#f7be02","#fe5db4", "#05b862", "#7d4cfa", "#fe6234", "a505f0"];
     const colors = new Array(15).fill(["#f7be02","#fe5db4", "#05b862", "#7d4cfa", "#fe6234", "#a505f0"]).flat();
-    console.log(colors)
+    // console.log(colors)
 
     const changeStyle = (e) => {
         if(e.target.classList.contains('subscriptionCont')){
@@ -38,7 +38,7 @@ export default function Subscription(){
         subsFromStorage.splice(i,1)
         setUpdatedSubs(subsFromStorage)
         localStorage.setItem('subscription', JSON.stringify(subsFromStorage))    
-        console.log(subsFromStorage)
+        // console.log(subsFromStorage)
     }
 
 useEffect(() => {
@@ -72,7 +72,7 @@ useEffect(() => {
                 style={{backgroundColor: colors[i] } }>
                     <p  className="fLeft">{subsFromStorage[i].name}<br/>
                         <span>${subsFromStorage[i].price}/month</span>  
-                        <button className="deleteButton" onClick={() => handleDelete(i)} />
+                        <button className="deleteButton" onClick={() => handleDelete(i)}>Delete</button>
                     </p>
                     
                     { <p className="fRight"><si.SiNetflix size={50}/></p> }

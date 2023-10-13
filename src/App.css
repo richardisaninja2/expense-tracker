@@ -1,5 +1,6 @@
 html{
     background: #18181c; 
+    width: 100vw;
 }
 .App{
     background: #18181c;
@@ -18,6 +19,7 @@ html{
 }
 
 .choiceSpan{
+    background: white;
     padding-top: 15%;
     padding-bottom: 15%;
     border-radius: 15px 15px 15px 15px;
