@@ -61,7 +61,7 @@ export default function PaymentHist(props){
                                     {due(subsFromStorage[i].date)}
                             </p> 
                         </div>
-                           <p className="fRight">-{subsFromStorage[i].price}</p>
+                           <p className="fRight">-${subsFromStorage[i].price}</p>
                             
                         
                         

@@ -1,11 +1,13 @@
 .subscriptionPage{
     margin-top: 20%;
 }
-.subscriptionCont{
+.subscriptionCont {
+    position: relative;
+    z-index: 1;
     border-radius: 35px 35px 0 0;
     margin-left: 5%;
     margin-right: 5%;
-    padding-bottom: 1%;
+    padding-bottom: 0%;
     margin-top: -14%;
     display: flex;
     align-items: center;
@@ -14,6 +16,8 @@
     /* background: green; */
     z-index: 1;
     position: relative;
+    transition: padding-bottom .3s, margin-top .3s;
+    
 
 }
 .subscriptionCont:nth-child(1){
@@ -26,16 +30,18 @@
     margin-left: 5%;
     margin-right: 5%;
     padding-bottom: 10%;
-    margin-top: -14%;
+    margin-top: -16%;
     display: flex;
     align-items: center;
     font-size: 1.5em;
     color: black;
     /* background: green; */
-    transition: padding-bottom .2s;
-    transition: margin-top .2s;
+    transition: padding-bottom .3s, margin-top .3s;
+    /* transition: ; */
+    
     z-index: 1;
     position: relative;
+    
 }
 .hidden{
     display:block

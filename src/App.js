@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Subscriptions from './Components/Subscriptions/Subscriptions';
-import { BrowserRouter, Routes, Route, Link, NavLink, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, NavLink, Outlet, HashRouter } from "react-router-dom";
 import General from './Components/General/General';
 import * as si from 'react-icons/si';
 import { useState } from 'react';
@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
 
-      <BrowserRouter>      
+      <HashRouter>      
       <div className="choice">
 
         <NavLink to="/"><button className="choiceSpan" ><si.SiSpotify/>General</button></NavLink>
@@ -35,7 +35,7 @@ function App() {
           <Route path="/addNew" element={<AddNew/>}/>
         </Routes>
         
-      </BrowserRouter>
+      </HashRouter>
 
 
     </div>

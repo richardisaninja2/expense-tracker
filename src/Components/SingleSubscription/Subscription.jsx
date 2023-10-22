@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 export default function Subscription(){
     //set style from css
     const [style, setStyle] = useState("subscriptionCont");
+    const[pStyle, setPStyle] = useState("fLeft")
     const [subsFromStorage, setSubsFromStorage] = useState();
     const[updatedSubs, setUpdatedSubs] = useState();
     //  = ["#f7be02","#fe5db4", "#05b862", "#7d4cfa", "#fe6234", "a505f0"];
@@ -17,14 +18,11 @@ export default function Subscription(){
 
     const changeStyle = (e) => {
         if(e.target.classList.contains('subscriptionCont')){
-
-            e.target.classList.add('subscriptionContClicked') 
-            
-
+            e.target.classList.add('subscriptionContClicked')  
             e.target.classList.remove('subscriptionCont') 
             // document.querySelector('.deleteButton').style.display= 'block';
         }
-        else{
+        else if(e.target.classList.contains('subscriptionContClicked')){
             e.target.classList.remove('subscriptionContClicked') 
             e.target.classList.add('subscriptionCont')
             // document.querySelector('.deleteButton').style.display= 'none';
@@ -68,7 +66,7 @@ useEffect(() => {
     
             </div> 
             {subsFromStorage && Object.keys(subsFromStorage).map((i, key) => (
-                <div key={i} className={style} onClick={changeStyle}
+                <div key={key} className={style} onClick={changeStyle}
                 style={{backgroundColor: colors[i] } }>
                     <p  className="fLeft">{subsFromStorage[i].name}<br/>
                         <span>${subsFromStorage[i].price}/month</span>  
